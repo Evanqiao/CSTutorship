@@ -64,13 +64,13 @@ int fall(Node* node){
     return node->status==1 ? fall(node->left) : fall(node->right); // 选择下一层节点
 }
 
-void printChildNode(Node *node) {
+void printLeafNode(Node *node) {
     if(node == NULL)
         return;
     if(node->isLeaf())
         cout << node->status << " ";
-    printChildNode(node->left);
-    printChildNode(node->right);
+    printLeafNode(node->left);
+    printLeafNode(node->right);
 }
 
 int main(int argc, const char * argv[]) {
@@ -81,7 +81,7 @@ int main(int argc, const char * argv[]) {
     for (int i = 0; i <= n - 1; i++) { // 模拟前n次
         fall(root);
     }
-    printChildNode(root);
+    printLeafNode(root);
     cout << endl;
     return 0;
 }
